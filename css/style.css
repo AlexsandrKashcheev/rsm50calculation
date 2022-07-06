@@ -1,0 +1,109 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+html {
+    box-sizing: border-box;
+}
+*,::after,::before {
+    box-sizing: inherit;
+}
+
+
+
+body {
+    background-color: rgb(0, 0, 0);
+    font-size: 18px;
+}
+
+.wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(33, 52, 78);
+    border-radius: 10px;
+}
+
+.title {
+    color: aliceblue;
+    padding: 20px 0px 20px 0px;
+    font-size: 28px;
+}
+
+.inp {
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.strBtn {
+    margin-bottom: 20px;
+}
+
+.strBtn:hover {
+    background-color: rgb(113, 28, 28);
+    color: #fff;
+}
+
+.bet {
+    padding: 5px 0px 5px 0px;
+    color: #fff;
+    margin-bottom: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+.post-title {
+    color: #fff;
+    padding: 10px 0px 10px 0px;
+    border: 2px solid rgb(195, 29, 29);
+    border-radius: 5px;
+}

@@ -1,4 +1,5 @@
 const inputOklad = document.getElementById('oklad');
+const inputPrize = document.getElementById('prize');
 const inputOvertime = document.getElementById('overtime');
 const inputDouble = document.getElementById('double');
 const btn = document.getElementById('btn');
@@ -14,6 +15,8 @@ function myFunc() { //основная функция всей программ�
     //присвоение переменным значения полей ввода
     oklad = inputOklad.value; //присвоение переменной значения поля ввода
     console.log(+oklad);
+
+    let prize = inputPrize.value;
 
     let overtime = inputOvertime.value;
     console.log(+overtime);
@@ -35,10 +38,10 @@ function myFunc() { //основная функция всей программ�
     let doubleBet = (bet * 2) * double;
     console.log(`Сумма оплаты за двойные: ${Math.round(doubleBet)}`);
 
-    let prize = +oklad * 50 / 100;
-    console.log(`Премия: ${Math.round(prize)}`);
+    let prizeSum = +oklad * +prize / 100;
+    console.log(`Премия: ${Math.round(prizeSum)}`);
 
-    let sum = +oklad + overtimeSum + doubleBet + prize;
+    let sum = +oklad + overtimeSum + doubleBet + prizeSum;
     console.log(`Начисления до вычета: ${Math.round(sum)}`);
 
     let residue = sum - sum * 13 / 100;

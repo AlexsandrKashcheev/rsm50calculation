@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&family=Roboto:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Расчитай зарплату!</title>
 </head>
 <body>
     <div class="wrapper">
-        <h1 class="title">Страница еще не готова</h1>
-        <h2 class="sub_title">Разработчик пыхтит над ее разработкой&#128516; </h2>
+        <h1 class="title">Страница расчета</h1>
+        <h2 class="sub_title">Почасовая оплата</h2>
+        <input type="text" id="hour" placeholder="Ставка за час..." class="inpOk inp"><br>
+        <input type="text" id="hourSum" placeholder="Кол-во отработанных часов..." class="inpDb inp"><br>
+        <input type="text" id="prize" placeholder="Премия в процентах(Без знака %)..." class="inpOk inp"><br>
+        <input type="text" id="overtime" placeholder="Кол-во сверхурочных..." class="inpOv inp"><br>
+        <input type="button" value="Расчитать" id="btn" class="strBtn"><br>
         <a href="index.html" class="back-menu">В меню</a>
+
+    <div class="post-title">Результаты расчета не являються на 100% точными скорее приблезительными!&copy;</div>
+
+    <script src="js/hourly.js"></script>
     </div>
 </body>
 </html>

@@ -59,6 +59,7 @@ html {
 
 body {
     background-color: rgb(0, 0, 0);
+    font-family: Roboto;
     font-size: 18px;
 }
 
@@ -76,18 +77,23 @@ body {
     color: aliceblue;
     padding: 20px 0px 10px 0px;
     font-size: 28px;
+    letter-spacing: 1px;
 }
 
 .sub_title {
 	color: aliceblue;
     padding-bottom: 15px;
     font-size: 20px;
+    letter-spacing: 1px;
 }
 
 .inp {
     width: 300px;
+    height: 30px;
+    font-size: 16px;
     margin-bottom: 10px;
     background-color: rgb(255, 255, 255);
+    border-radius: 8px;
 }
 
 .strBtn {
@@ -112,7 +118,7 @@ body {
     color: #000;
     border: none;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     transition: ease .2s;
 }
 
@@ -130,6 +136,7 @@ body {
 }
 
 .post-title {
+    letter-spacing: 1px;
     color: #fff;
     padding: 10px 0px 10px 0px;
     border: 2px solid rgb(195, 29, 29);

@@ -59,6 +59,7 @@ html {
 
 body {
     background-color: rgb(0, 0, 0);
+    color: #fff;
     font-family: Roboto;
     font-size: 18px;
 }
@@ -94,6 +95,10 @@ body {
     margin-bottom: 10px;
     background-color: rgb(255, 255, 255);
     border-radius: 8px;
+}
+
+.check {
+    margin-bottom: 15px;
 }
 
 .strBtn {

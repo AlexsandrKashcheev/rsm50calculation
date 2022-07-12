@@ -11,7 +11,6 @@ const elemResidue = document.createElement('div');
 
 let countHour = 8;
 
-
 function myFunc() {
     //присвоение переменным значения полей ввода
     let hour = Number(inputHour.value);
@@ -28,7 +27,6 @@ function myFunc() {
 
     let overtime = Number(inputOvertime.value);
     console.log(overtime);
-
 
 
     //Расчеты
@@ -54,24 +52,21 @@ function myFunc() {
     console.log(`Чистая сумма начислений: ${Math.round(residue)}`);
 
 
-
-
     //Добавление элементов на страницу
-    elemMonth.innerHTML = `Начислено за фонд времени: ${Math.round(month)}`; //наполнение нового элемента
-    elemMonth.classList.add('bet'); //добавление класса элементу
-    btn.after(elemMonth); //добавление элемента на страницу
 
-    elemOvertime.innerHTML = `Начисленно за сверхурочные: ${Math.round(overTimeSum)}`;
-    elemOvertime.classList.add('bet');
-    elemMonth.after(elemOvertime);
+    addendum(elemMonth, 'Начислено за фонд времени', month, btn);
 
-    elemPrize.innerHTML = `Начисленно премии: ${Math.round(prizeSum)}`;
-    elemPrize.classList.add('bet');
-    elemOvertime.after(elemPrize);
+    addendum(elemOvertime, 'Начислено за сверхурочные', overTimeSum, elemMonth);
 
-    elemResidue.innerHTML = `Чистая сумма начислений: ${Math.round(residue)}`;
-    elemResidue.classList.add('bet');
-    elemPrize.after(elemResidue);
+    addendum(elemPrize, 'Начислено премии', prizeSum, elemOvertime);
+
+    addendum(elemResidue, 'Чистая сумма начислений', residue, elemPrize);
 }
 
 btn.onclick = myFunc;
+
+function addendum(object, meaning, varia, where) {
+    object.innerHTML = `${meaning}: ${Math.round(varia)}`; //наполнение нового элемента содержимым
+    object.classList.add('bet'); //добавление класса новому элементу
+    where.after(object); //добавление элемента на страницу
+}

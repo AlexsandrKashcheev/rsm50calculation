@@ -2,34 +2,45 @@ const inputOklad = document.getElementById('oklad');
 const inputPrize = document.getElementById('prize');
 const inputOvertime = document.getElementById('overtime');
 const inputDouble = document.getElementById('double');
+const inputCheck = document.getElementById('work_day');
 const btn = document.getElementById('btn');
 const elemBet = document.createElement('div');
 const elemBetHour = document.createElement('div');
 const elemOvertime = document.createElement('div');
 const elemResidue = document.createElement('div');
+const elemPrize = document.createElement('div');
+const elemDouble = document.createElement('div');
 
-let oklad;
 
 function myFunc() { //основная функция всей программы
 
     //присвоение переменным значения полей ввода
-    oklad = inputOklad.value; //присвоение переменной значения поля ввода
-    console.log(+oklad);
+    let hourDay;
+    
+    if(inputCheck.checked){
+        hourDay = 12;
+    }else{
+        hourDay = 8;
+    }
 
-    let prize = inputPrize.value;
 
-    let overtime = inputOvertime.value;
-    console.log(+overtime);
+    let oklad = Number(inputOklad.value);
+    console.log(oklad);
 
-    let double = inputDouble.value;
-    console.log(+double);
+    let prize = Number(inputPrize.value);
+
+    let overtime = Number(inputOvertime.value);
+    console.log(overtime);
+
+    let double = Number(inputDouble.value);
+    console.log(double);
 
 
     //Расчеты
     let bet = +oklad / 23; //расчет ставки за день
     console.log(`Ставка за смену: ${Math.round(bet)}`);
 
-    let betHour = bet / 8; //расчет ставки за час работы
+    let betHour = bet / hourDay; //расчет ставки за час работы
     console.log(`Ставка за час работы: ${Math.round(betHour)}`);
 
     let overtimeSum = betHour * overtime;
@@ -49,24 +60,25 @@ function myFunc() { //основная функция всей программ�
 
 
     //добавление элементов на страницу
-    elemBet.innerHTML = `Ставка за смену: ${Math.round(bet)}`; //наполнение нового элемента содержимым
-    elemBet.classList.add('bet'); //добавление класса новому элементу
-    btn.after(elemBet); //добавление элемента на страницу
+    addendum(elemBet, "Ставка за смену", bet, btn);
 
-    elemBetHour.innerHTML = `Ставка за час работы: ${Math.round(betHour)}`;
-    elemBetHour.classList.add('bet');
-    elemBet.after(elemBetHour);
+    addendum(elemBetHour, "Ставка за час", betHour, elemBet);
 
-    elemOvertime.innerHTML = `Сумма оплаты за сверхурочные: ${Math.round(overtimeSum)}`;
-    elemOvertime.classList.add('bet');
-    elemBetHour.after(elemOvertime);
+    addendum(elemOvertime, "Начисленно за сверхурочные", overtimeSum, elemBetHour);
 
-    elemResidue.innerHTML = `Чистая сумма начислений: ${Math.round(residue)}`;
-    elemResidue.classList.add('bet');
-    elemOvertime.after(elemResidue);
+    addendum(elemDouble, 'Начислено за двойные', doubleBet, elemOvertime);
+
+    addendum(elemPrize, 'Начисленно премии', prizeSum, elemDouble);
+
+    addendum(elemResidue, "Чистая сумма начислений", residue, elemPrize);
 }
 
 btn.onclick = myFunc; //запуск функции при клике на кнопку
 
+function addendum(object, meaning, varia, where) {
+    object.innerHTML = `${meaning}: ${Math.round(varia)}`; //наполнение нового элемента содержимым
+    object.classList.add('bet'); //добавление класса новому элементу
+    where.after(object); //добавление элемента на страницу
+}
 
 

@@ -24,8 +24,7 @@ function myFunc() {
     let overtime = Number(inputOvertime.value);
     console.log(overtime);
 
-
-
+    
     //Расчеты
     let month = hourSum * hour;
     console.log(`Начислено по норме часов: ${Math.round(month)}`);
@@ -41,8 +40,6 @@ function myFunc() {
         overTimeSum *= 2;
     }
 
-    console.log(`Начислено за сверхурочные(Оверы): ${Math.round(overTimeSum)}`);
-
     let sum = month + prizeSum + overTimeSum;
     console.log(`Начислено до вычета ндфл: ${Math.round(sum)}`);
 
@@ -50,24 +47,20 @@ function myFunc() {
     console.log(`Чистая сумма начислений: ${Math.round(residue)}`);
 
 
-
     //добавление элементов на страницу
-    elemMonth.innerHTML = `Начислено по норме часов: ${Math.round(month)}`;
-    elemMonth.classList.add('bet');
-    btn.after(elemMonth);
+    addendum(elemMonth, 'Начислено по норме часов', month, btn);
 
-    elemPrize.innerHTML = `Начисленно премии: ${Math.round(prizeSum)}`;
-    elemPrize.classList.add('bet');
-    elemMonth.after(elemPrize);
+    addendum(elemPrize, 'Начисленно премии', prizeSum, elemMonth);
 
-    elemOvertime.innerHTML = `Начислено за сверхурочные(Оверы): ${Math.round(overTimeSum)}`;
-    elemOvertime.classList.add('bet');
-    elemPrize.after(elemOvertime);
+    addendum(elemOvertime, 'Начисленно за сверхурочные', overTimeSum, elemPrize);
 
-    elemResidue.innerHTML = `Чистая сумма начислений: ${Math.round(residue)}`;
-    elemResidue.classList.add('bet');
-    elemOvertime.after(elemResidue);
+    addendum(elemResidue, 'Чистая сумма начислений', residue, elemOvertime);
 }
 
-
 btn.onclick = myFunc;
+
+function addendum(object, meaning, varia, where) {
+    object.innerHTML = `${meaning}: ${Math.round(varia)}`; //наполнение нового элемента содержимым
+    object.classList.add('bet'); //добавление класса новому элементу
+    where.after(object); //добавление элемента на страницу
+}

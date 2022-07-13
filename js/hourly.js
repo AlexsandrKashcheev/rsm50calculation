@@ -9,7 +9,6 @@ const elemOvertime = document.createElement('div');
 const elemResidue = document.createElement('div');
 
 
-
 function myFunc() {
     //Присвоение элементам значения полей ввода
     let hour = Number(inputHour.value);
@@ -46,15 +45,17 @@ function myFunc() {
     let residue = sum - sum * 13 / 100;
     console.log(`Чистая сумма начислений: ${Math.round(residue)}`);
 
-
+    
     //добавление элементов на страницу
-    addendum(elemMonth, 'Начислено по норме часов', month, btn);
+    let arrElem = [elemMonth, elemPrize, elemOvertime, elemResidue];
+    let arrMeaning = ['Начисленно по норме часов', 'Начисленно премии', 'Начислено за сверхурочные', 'Чистая сумма начислений'];
+    let arrAria = [month, prizeSum, overTimeSum, residue];
+    let arrElemWhere = [btn, elemMonth, elemPrize, elemOvertime, elemResidue];  
 
-    addendum(elemPrize, 'Начисленно премии', prizeSum, elemMonth);
+    for(let i = 0; i < arrElem.length; i++){
+        addendum(arrElem[i], arrMeaning[i], arrAria[i], arrElemWhere[i]);
+    }
 
-    addendum(elemOvertime, 'Начисленно за сверхурочные', overTimeSum, elemPrize);
-
-    addendum(elemResidue, 'Чистая сумма начислений', residue, elemOvertime);
 }
 
 btn.onclick = myFunc;

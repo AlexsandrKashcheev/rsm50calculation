@@ -60,17 +60,15 @@ function myFunc() { //основная функция всей программ�
 
 
     //добавление элементов на страницу
-    addendum(elemBet, "Ставка за смену", bet, btn);
+    let arrElem = [elemBet, elemBetHour, elemOvertime, elemDouble, elemPrize, elemResidue];
+    let arrMeaning = ['Ставка за смену', 'Ставка за час', 'Начислено за сверхурочные', 'Начислено за двойные', 'Начисленно премии', 'Чистая сумма начислений'];
+    let arrAria = [bet, betHour, overtimeSum, doubleBet, prizeSum, residue];
+    let arrElemWhere = [btn, elemBet, elemBetHour, elemOvertime, elemDouble, elemPrize];
 
-    addendum(elemBetHour, "Ставка за час", betHour, elemBet);
+    for(let i = 0; i < arrElem.length; i++){
+        addendum(arrElem[i], arrMeaning[i], arrAria[i], arrElemWhere[i]);
+    }
 
-    addendum(elemOvertime, "Начисленно за сверхурочные", overtimeSum, elemBetHour);
-
-    addendum(elemDouble, 'Начислено за двойные', doubleBet, elemOvertime);
-
-    addendum(elemPrize, 'Начисленно премии', prizeSum, elemDouble);
-
-    addendum(elemResidue, "Чистая сумма начислений", residue, elemPrize);
 }
 
 btn.onclick = myFunc; //запуск функции при клике на кнопку

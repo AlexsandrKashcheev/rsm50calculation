@@ -53,14 +53,15 @@ function myFunc() {
 
 
     //Добавление элементов на страницу
+    let arrElem = [elemMonth, elemPrize, elemOvertime, elemResidue];
+    let arrMeaning = ['Начисленно по норме часов', 'Начисленно премии', 'Начислено за сверхурочные', 'Чистая сумма начислений'];
+    let arrAria = [month, prizeSum, overTimeSum, residue];
+    let arrElemWhere = [btn, elemMonth, elemPrize, elemOvertime, elemResidue]; 
 
-    addendum(elemMonth, 'Начислено за фонд времени', month, btn);
+    for(let i = 0; i < arrElem.length; i++){
+        addendum(arrElem[i], arrMeaning[i], arrAria[i], arrElemWhere[i]);
+    }
 
-    addendum(elemOvertime, 'Начислено за сверхурочные', overTimeSum, elemMonth);
-
-    addendum(elemPrize, 'Начислено премии', prizeSum, elemOvertime);
-
-    addendum(elemResidue, 'Чистая сумма начислений', residue, elemPrize);
 }
 
 btn.onclick = myFunc;

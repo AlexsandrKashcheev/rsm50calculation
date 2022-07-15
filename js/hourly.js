@@ -9,6 +9,7 @@ const elemOvertime = document.createElement('div');
 const elemResidue = document.createElement('div');
 
 
+
 function myFunc() {
     //Присвоение элементам значения полей ввода
     let hour = Number(inputHour.value);

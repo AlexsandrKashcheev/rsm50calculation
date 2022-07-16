@@ -1,5 +1,4 @@
 const inputHour = document.getElementById('hour'); //получение ставки за час
-const inputDay = document.getElementById('day'); //Дней в месяце
 const inputPeople = document.getElementById('people'); // количество людей в бригаде
 const inputBs = document.getElementById('bs'); // количество бс
 const inputPlan = document.getElementById('plan'); //план на месяц
@@ -18,33 +17,19 @@ let price = 2500; //Приблизительная цена одной маши�
 function myFunc() {
     //присвоение переменным значения полей ввода
     let hour = Number(inputHour.value);
-    console.log(hour);
-
-    let day = Number(inputDay.value);
-    console.log(day);
-
     let numberOfPeople = Number(inputPeople.value);
-    console.log(numberOfPeople);
-
     let bs = Number(inputBs.value);
-    console.log(bs);
-
     let plan = Number(inputPlan.value);
-    console.log(plan);
-
     let lag = Number(inputLag.value);
-    console.log(lag);
-
     let overtime = Number(inputOvertime.value);
-    console.log(overtime);
-
 
     //Расчеты
-   let month = plan * price / numberOfPeople;
+   let month = plan * price / numberOfPeople - lag * price / numberOfPeople;
    console.log(`Начисленно по сделке: ${Math.round(month)}`);
 
    let prize = (lag / plan) * 100; // расчет суммы удержания в процентах
-   let betPrize = 50 - prize; 
+   let betPrize = (30 - 30 * prize / 100) + 20; 
+  
    console.log(`Премия составила: ${Math.round(betPrize)}%`);
    let prizeSum = month * betPrize / 100; //расчет премии за выполненую работу
    console.log(`Начисленно премии: ${Math.round(prizeSum)}`);
@@ -66,21 +51,22 @@ function myFunc() {
 
 
     //Добавление элементов на страницу
-    let arrElem = [elemMonth, elemPrize, elemOvertime, elemResidue];
-    let arrMeaning = ['Начисленно по сделке', 'Начисленно премии', 'Начислено за сверхурочные', 'Чистая сумма начислений'];
-    let arrAria = [month, prizeSum, overTimeSum, residue];
-    let arrElemWhere = [btn, elemMonth, elemPrize, elemOvertime, elemResidue]; 
+    let arrElem = [elemMonth, elemBetPrize, elemPrize, elemOvertime, elemResidue];
+    let arrMeaning = ['Начисленно по сделке', 'Премия составила', 'Начисленно премии', 'Начислено за сверхурочные', 'Чистая сумма начислений'];
+    let arrAria = [month, betPrize, prizeSum, overTimeSum, residue];
+    let arrElemWhere = [btn, elemMonth, elemBetPrize, elemPrize, elemOvertime, elemResidue]; 
 
     for(let i = 0; i < arrElem.length; i++){
-        addendum(arrElem[i], arrMeaning[i], arrAria[i], arrElemWhere[i]);
+        if(arrElem[i] == elemBetPrize && arrMeaning[i] == 'Премия составила'){
+            arrElem[i].innerHTML = `${arrMeaning[i]}: ${Math.round(arrAria[i])}%`;
+        }else{
+            arrElem[i].innerHTML = `${arrMeaning[i]}: ${Math.round(arrAria[i])}`;
+        }
+        
+        arrElem[i].classList.add('bet');
+        arrElemWhere[i].after(arrElem[i]);
     }
 
 }
 
 btn.onclick = myFunc;
-
-function addendum(object, meaning, varia, where) {
-    object.innerHTML = `${meaning}: ${Math.round(varia)}`; //наполнение нового элемента содержимым
-    object.classList.add('bet'); //добавление класса новому элементу
-    where.after(object); //добавление элемента на страницу
-}

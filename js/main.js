@@ -66,17 +66,12 @@ function myFunc() { //основная функция всей программ�
     let arrElemWhere = [btn, elemBet, elemBetHour, elemOvertime, elemDouble, elemPrize];
 
     for(let i = 0; i < arrElem.length; i++){
-        addendum(arrElem[i], arrMeaning[i], arrAria[i], arrElemWhere[i]);
+        arrElem[i].innerHTML = `${arrMeaning[i]}: ${Math.round(arrAria[i])}`;
+        arrElem[i].classList.add('bet');
+        arrElemWhere[i].after(arrElem[i]);
     }
 
 }
 
 btn.onclick = myFunc; //запуск функции при клике на кнопку
-
-function addendum(object, meaning, varia, where) {
-    object.innerHTML = `${meaning}: ${Math.round(varia)}`; //наполнение нового элемента содержимым
-    object.classList.add('bet'); //добавление класса новому элементу
-    where.after(object); //добавление элемента на страницу
-}
-
 

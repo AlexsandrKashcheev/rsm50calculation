@@ -54,7 +54,10 @@ function myFunc() {
     let arrElemWhere = [btn, elemMonth, elemPrize, elemOvertime, elemResidue];  
 
     for(let i = 0; i < arrElem.length; i++){
-        addendum(arrElem[i], arrMeaning[i], arrAria[i], arrElemWhere[i]);
+        arrElem[i].innerHTML = `${arrMeaning[i]}: ${Math.round(arrAria[i])}`;
+        arrElem[i].classList.add('bet');
+        arrElemWhere[i].after(arrElem[i]);
+        //addendum(arrElem[i], arrMeaning[i], arrAria[i], arrElemWhere[i]);
     }
 
 }

@@ -4,6 +4,9 @@ const inputBs = document.getElementById('bs'); // количество бс
 const inputPlan = document.getElementById('plan'); //план на месяц
 const inputLag = document.getElementById('lag'); //отставание
 const inputOvertime = document.getElementById('overtime'); //количество сверхурочных
+const inputCheckPrize = document.getElementById('dep_prize');
+const inputCheck5s = document.getElementById('dep_prize_5s');
+const inputCheckTaktTime = document.getElementById('dep_prize_taktTime');
 const btn = document.getElementById('btn'); // кнопка расчета
 const elemMonth = document.createElement('div'); //элемент "начислено по сделке"
 const elemOvertime = document.createElement('div'); // начисленно за сверхурочные
@@ -25,30 +28,27 @@ function myFunc() {
 
     //Расчеты
    let month = plan * price / numberOfPeople - lag * price / numberOfPeople;
-   console.log(`Начисленно по сделке: ${Math.round(month)}`);
-
    let prize = (lag / plan) * 100; // расчет суммы удержания в процентах
-   let betPrize = (30 - 30 * prize / 100) + 20; 
+   let betPrize = (25 - 25 * prize / 100) + 25; 
+
+   if (inputCheck5s.checked && inputCheckTaktTime.checked){
+    betPrize = betPrize - 25;
+    }else if (inputCheckTaktTime.checked){
+        betPrize = betPrize - 15;
+    }else if (inputCheck5s.checked){
+        betPrize = betPrize - 10;
+    }
   
-   console.log(`Премия составила: ${Math.round(betPrize)}%`);
    let prizeSum = month * betPrize / 100; //расчет премии за выполненую работу
-   console.log(`Начисленно премии: ${Math.round(prizeSum)}`);
-
+   if(inputCheckPrize.checked) {
+        prizeSum = 0;
+        betPrize = 0;
+    }
    let retention = month - (bs * hour); //вычет за отпуск без сохранения зп
-   console.log(`Сумма после вычета бс: ${Math.round(retention)}`);
-
    month = retention;
-   console.log(`Начислено за месяц после вычета бс: ${Math.round(month)}`);
-
    let overTimeSum = (overtime * hour) * 2 / 3;
-   console.log(`Начисленно за сверхурочные: ${Math.round(overTimeSum)}`);
-
    let sum = month + prizeSum + overTimeSum;
-   console.log(`Начисленно до вычета ндфл: ${Math.round(sum)}`);
-
    let residue = sum - sum * 13 / 100;
-   console.log(`Чистая сумма начислений: ${Math.round(residue)}`);
-
 
     //Добавление элементов на страницу
     let arrElem = [elemMonth, elemBetPrize, elemPrize, elemOvertime, elemResidue];
@@ -62,7 +62,6 @@ function myFunc() {
         }else{
             arrElem[i].innerHTML = `${arrMeaning[i]}: ${Math.round(arrAria[i])}`;
         }
-        
         arrElem[i].classList.add('bet');
         arrElemWhere[i].after(arrElem[i]);
     }

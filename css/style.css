@@ -101,6 +101,12 @@ body {
     margin-bottom: 15px;
 }
 
+.input-check {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .strBtn {
     font-size: 18px;
     padding: 3px 15px;

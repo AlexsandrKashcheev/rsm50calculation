@@ -107,6 +107,12 @@ body {
     align-items: center;
 }
 
+.check__item {
+    min-width: 300px;
+    display: flex;
+    align-items: flex-start;
+}
+
 .strBtn {
     font-size: 18px;
     padding: 3px 15px;
